@@ -81,14 +81,14 @@ class Bird(pygame.sprite.Sprite):
 			self.vel += 0.5
 			if self.vel > 8:
 				self.vel = 8
-			if self.rect.bottom < 768:
+			if self.rect.bottom < 570: #768
 				self.rect.y += int(self.vel)
 
 		if game_over == False:
 			#jump
 			if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
 				self.clicked = True
-				self.vel = -10
+				self.vel = -10 #change this to make game easy
 			if pygame.mouse.get_pressed()[0] == 0:
 				self.clicked = False
 
@@ -106,6 +106,7 @@ class Bird(pygame.sprite.Sprite):
 			#rotate the bird
 			self.image = pygame.transform.rotate(self.images[self.index], self.vel * -2)
 		else:
+			# If the game is over, rotate the bird to face downwards.
 			self.image = pygame.transform.rotate(self.images[self.index], -90)
 
 
@@ -207,7 +208,7 @@ while run:
 		game_over = True
 
 	#check if bird has hit the ground
-	if flappy.rect.bottom >= 768:
+	if flappy.rect.bottom >= 570: #768
 		game_over = True
 		flying = False
 
